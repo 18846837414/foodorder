@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using FoodOrder.Models;
+using Data;
 using FoodOrder.Models.ManageViewModels;
 using FoodOrder.Services;
 

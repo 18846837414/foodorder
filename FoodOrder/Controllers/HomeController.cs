@@ -5,11 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FoodOrder.Models;
+using Data.Services;
 
 namespace FoodOrder.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IOrderServices _orderServices;
+
+        public HomeController(IOrderServices orderServices)
+        {
+            _orderServices = orderServices;
+        }
         public IActionResult Index()
         {
             return View();
@@ -24,7 +31,8 @@ namespace FoodOrder.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            
+            ViewData["Message"] = "Bajs";
 
             return View();
         }

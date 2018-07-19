@@ -33,3 +33,17 @@
         display: none;
     }
 }
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    left: 0;
+    padding: 10px 20px;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
