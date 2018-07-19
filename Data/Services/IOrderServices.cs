@@ -29,9 +29,9 @@ namespace Data.Services
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="i"></param>
+        /// <param name="category"></param>
         /// <returns Category></returns>
-        Task<Category> EditCategoryAsync(int id);
+        Task<Category> EditCategoryAsync(Category category);
 
         /// <summary>
         /// 

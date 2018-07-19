@@ -26,12 +26,24 @@ namespace FoodOrder.Controllers
         // GET: Categories
         public async Task<IActionResult> Index()
         {
+            var categories = await _orderServices.GetAllCategoriesAsync();
+                       
             var vm = new IndexViewModel()
             {
-                Categories = await _orderServices.GetAllCategoriesAsync()
+                Categories = new List<CategoryViewModel>()
             };
+
+            foreach(var item in categories)
+            {
+                vm.Categories.Add(new CategoryViewModel()
+                {
+                    DisplayOrder = item.DisplayOrder,
+                    Id = item.Id,
+                    Name = item.Name
+                });
+            }
             
-            return View(vm.Categories);
+            return View(vm);
         }
 
         // GET: Categories/Details/5
@@ -107,7 +119,7 @@ namespace FoodOrder.Controllers
             {
                 try
                 {
-                    category = await _orderServices.EditCategoryAsync(id);
+                    category = await _orderServices.EditCategoryAsync(category);
                   
                 }
                 catch (DbUpdateConcurrencyException)

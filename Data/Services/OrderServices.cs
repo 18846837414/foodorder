@@ -21,9 +21,14 @@ namespace Data.Services
             return await _db.Categories.AnyAsync(e => e.Id == id);
         }
 
-        public Task<Category> CreateCategoryAsync(Category category)
+        public async Task<Category> CreateCategoryAsync(Category category)
         {
-            throw new System.NotImplementedException();
+            await _db.Categories.AddAsync(category);
+            var saved = await _db.SaveChangesAsync();
+            if (saved == 0)
+                return null;
+            
+            return category;
         }
 
         public async Task DeleteCategoryAsync(int id)
@@ -32,11 +37,18 @@ namespace Data.Services
             _db.Categories.Remove(category);
             await _db.SaveChangesAsync();
         }
-
-        public async Task<Category> EditCategoryAsync(int id)
+       
+        public async Task<Category> EditCategoryAsync(Category category)
         {
-            var category = await _db.Categories
-                 .SingleOrDefaultAsync(m => m.Id == id);
+            var cat = await _db.Categories
+                 .SingleOrDefaultAsync(m => m.Id == category.Id);
+            if (category == null)
+                return null;
+            cat.Name = category.Name;
+            cat.DisplayOrder = category.DisplayOrder;
+            var saved = await _db.SaveChangesAsync();
+            if (saved == 0)
+                return null;
 
             return category;
         }

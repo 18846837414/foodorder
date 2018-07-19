@@ -9,7 +9,12 @@ namespace FoodOrder.Models.CategoriesViewModel
 {
     public class IndexViewModel
     {
-        public List<Category> Categories { get; set; }
+        public List<CategoryViewModel> Categories { get; set; }
+
+        public CategoryViewModel Default
+        {
+            get { return new CategoryViewModel(); }
+        }
     }
 
     

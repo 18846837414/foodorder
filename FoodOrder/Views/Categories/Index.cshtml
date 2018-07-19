@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Models.Category>
+﻿@model FoodOrder.Models.CategoriesViewModel.IndexViewModel
 
 @{
     ViewData["Title"] = "Index";
+    
 }
 
 <h2>Index</h2>
@@ -13,16 +14,16 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DisplayOrder)
+                    @Html.DisplayNameFor(model => model.Default.DisplayOrder)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Default.Name)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Categories) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.DisplayOrder)
